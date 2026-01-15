@@ -1,0 +1,9 @@
+#---------------------------------------------------------------
+# Entry 0 - Primary WiFi Network
+# - WiFi SSID: required, case sensitive
+aWIFI_SSID[0]='YOUR_WIFI_NAME_HERE'
+# - WiFi key: If no key/open, leave this blank
+aWIFI_KEY[0]='YOUR_WIFI_PASSWORD_HERE'
+# - Key type: NONE (no key/open) | WPA-PSK | WEP | WPA-EAP
+aWIFI_KEYMGR[0]='WPA-PSK'
+#---------------------------------------------------------------
