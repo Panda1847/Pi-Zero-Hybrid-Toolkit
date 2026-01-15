@@ -10,6 +10,9 @@ echo "--- Toolkit Setup Started: $(date) ---" > "$LOG_FILE"
 if [ -f /boot/mode_blue ]; then
     MODE="BLUE"
     echo "[*] Blue Team Mode Detected." >> "$LOG_FILE"
+elif [ -f /boot/mode_assistant ]; then
+    MODE="ASSISTANT"
+    echo "[*] Tactical Assistant Mode Detected." >> "$LOG_FILE"
 else
     MODE="RED"
     echo "[*] Red Team Mode Detected (Default)." >> "$LOG_FILE"
@@ -35,6 +38,25 @@ elif [ "$MODE" == "BLUE" ]; then
     apt-get update
     apt-get install -y fail2ban iptables-persistent tcpdump snort >> "$LOG_FILE" 2>&1
     # Configure basic monitoring/alerting
+elif [ "$MODE" == "ASSISTANT" ]; then
+    echo "[*] Installing Tactical Assistant (AI Helper) tools..." >> "$LOG_FILE"
+    apt-get update
+    apt-get install -y python3-pip python3-venv >> "$LOG_FILE" 2>&1
+    # Setup the assistant service
+    cp /boot/assistant/tactical_assistant.py /usr/local/bin/
+    cat << 'EOF' > /etc/systemd/system/tactical-assistant.service
+[Unit]
+Description=Tactical Red Team Assistant
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /usr/local/bin/tactical_assistant.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+    systemctl enable tactical-assistant
 fi
 
 # 5. Set up Web Terminal (TTYD)

@@ -4,7 +4,7 @@ A versatile, lightweight, and robust **Red Team / Blue Team** toolkit for the Ra
 
 ## 🚀 Features
 
-- **Dual Mode Operation:** Easily switch between **Red Team (Attacker)** and **Blue Team (Defender)** modes.
+- **Triple Mode Operation:** Choose between **Red Team (Attacker)**, **Blue Team (Defender)**, or **Tactical Assistant (AI Helper)** modes.
 - **Self-Healing WiFi:** Background monitoring service that automatically reconnects if the connection drops.
 - **USB Gadget Mode:** Access your Pi via USB Ethernet or Serial—no WiFi required.
 - **Web-Based Management:**
@@ -23,6 +23,7 @@ A versatile, lightweight, and robust **Red Team / Blue Team** toolkit for the Ra
 4. **Select Mode (Optional):**
    - **Red Team (Default):** No action needed.
    - **Blue Team:** Create an empty file named `mode_blue` on the `/boot` partition.
+   - **Tactical Assistant:** Create an empty file named `mode_assistant` on the `/boot` partition.
 5. **Boot:** Insert the card into your Pi Zero W and power it on.
 
 ## 📂 Included Tools
@@ -39,9 +40,15 @@ A versatile, lightweight, and robust **Red Team / Blue Team** toolkit for the Ra
 - `tcpdump`: Command-line packet analyzer.
 - `iptables-persistent`: Advanced firewall management.
 
+### 🤖 Tactical Assistant Mode
+- **AI-Driven Intel:** Analyzes Red Team logs and provides aggressive tactical suggestions.
+- **Automated Support:** Background service that monitors and assists the primary operator.
+- **Intel Logging:** Centralized tactical intelligence stored in `assistant_intel.log`.
+
 ## 🔑 Default Credentials
 - **User:** `root`
 - **Password:** `dietpi`
 
 ---
-*Disclaimer: This toolkit is for educational and authorized security testing purposes only.*
+## ⚖️ Legal & Ethical Use
+This toolkit is provided under the **MIT License**. By using this software, you agree to the terms in the [DISCLAIMER.md](DISCLAIMER.md). The developer is **not responsible** for any misuse or damage. **Authorized use only.** Recommended for use in **VM vs. VM** environments.
